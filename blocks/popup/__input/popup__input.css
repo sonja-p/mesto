@@ -1,0 +1,6 @@
+.popup__input {
+    font-family: inherit;
+    border: none;
+    border-bottom: 1px solid #000000;
+    opacity: 0.2;
+}

@@ -1,0 +1,13 @@
+.popup__save-button {
+    background-color: #000000;
+    padding: 14px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}

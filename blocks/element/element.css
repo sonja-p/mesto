@@ -1,0 +1,11 @@
+.element {
+    display: grid;
+    grid-template-columns: 1fr 38px;
+    grid-template-rows: 282px 1fr;
+    grid-template-areas: 'image image'
+    'title like';
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    align-items: center;
+}

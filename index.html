@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="page">
+    <div class="page__container">
+        <header class="header">
+            <img src="./images/logo.svg" alt="Логотип Место Россия" class="header__logo">
+        </header>
+
+        <main class="content page__content">
+            <section class="profile">
+                <div class="profile__avatar"></div>
+                <div class="profile__info">
+                    <div class="">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <img src="./images/edit-button.svg" alt="" class="profile__edit-button">
+                    </div>
+                    <h2 class="profile__description">Исследователь океана</h2>
+                </div>
+                <img src="./images/add-button.svg" alt="" class="profile__add-button">
+            </section>
+            <section class="elements">
+            <ul class="elements__list">
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/kichi-balyk.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Кичи-Балык</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>
+              </li>
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/kirovsk.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Кировск</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>    
+              </li>
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/sulakskii-kanyon.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Сулакский каньон</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>
+              </li>
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/vladivostok.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Владивосток</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>
+              </li>
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/krasnaya-polyana.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Красная Поляна</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>
+              </li>
+              <li class="elements__list-item">
+                <div class="element">
+                    <img src="./images/zelenogradsk.jpg" alt="" class="element__image">
+                    <h3 class="element__title">Зеленоградск</h3>
+                    <img src="./images/like-button.svg" alt="" class="like-button">
+                </div>
+              </li>
+            </ul>
+            </section>
+        </main>
+
+        <footer class="footer">
+          <p class="footer__copyright">
+            &copy; 2020 Mesto Russia
+          </p>
+        </footer>
+
+        <section class="popup">
+            <form class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <input class="name popup__input" name="name" type="text" placeholder="">
+                <input class="description popup__input" name="description" type="textarea" placeholder="">
+                <button class="popup__save-button" type="submit">Сохранить</button>
+                <span class="popup__close"></span>
+            </form>
+        </section>
+    </div>
+<script src="./scripts/index.js"></script>
+</body>
+</html>
+       
