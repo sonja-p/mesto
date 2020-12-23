@@ -1,5 +1,16 @@
 .profile__add-button {
+    background-image: url(../../../images/add-button.svg);
+    background-color: inherit;
     width: 150px;
     height: 50px;
     position: right;
+    border: none;
+    cursor: pointer;
 }
+
+@media screen and (max-width: 700px) {
+    .profile__add-button {
+        background-image: url(../../../images/add-button-320.svg);
+        width: 282px;
+    }
+  }

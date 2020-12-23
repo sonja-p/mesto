@@ -28,3 +28,5 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/page/__footer/page__footer.css);
+@import url(../blocks/page/__header/page__header.css);
