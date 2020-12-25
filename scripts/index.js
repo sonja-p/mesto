@@ -16,8 +16,13 @@ popup.addEventListener('click', (event) => {
 })
 
 let form = popup.querySelector('.popup__container')
+let inputs = popup.querySelectorAll('input')
+let name = document.querySelector('.profile__name')
+let description = document.querySelector('.profile__description')
 
 form.addEventListener('submit', (event) => {
     event.preventDefault()
-    console.log('submit')
+    name.textContent = inputs[0].value
+    description.textContent = inputs[1].value
+    togglePopup()
 })
