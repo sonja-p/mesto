@@ -2,4 +2,18 @@
     grid-area: like;
     width: 20.76px;
     height: 18.13px;
+    background-image: url(../../../images/like-button.svg);
+    background-size: cover;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.element__like-button:hover {
+    opacity: 0.5;
+}
+
+.element__like-button:active {
+    background-image: url(../../../images/like-button-active.svg);
+    opacity: 1;
 }
