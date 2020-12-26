@@ -1,0 +1,13 @@
+.profile__name-section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 700px) {
+    .profile__name-section {  
+        margin-top: 26px;
+        margin-bottom: 14px;
+        justify-content: center;
+    }
+}
