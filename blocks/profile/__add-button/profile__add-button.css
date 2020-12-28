@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
     .profile__add-button {
         background-image: url(../../../images/add-button-320.svg);
         width: 282px;
