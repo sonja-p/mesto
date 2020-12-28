@@ -5,9 +5,9 @@
 }
 
 @media screen and (max-width: 750px) {
-    .profile__name-section {  
+    .profile__name-section {
         margin-top: 26px;
-        margin-bottom: 14px;
         justify-content: center;
+        transform: translateX(14px);
     }
 }
