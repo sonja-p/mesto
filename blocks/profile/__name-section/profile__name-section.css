@@ -1,13 +1,24 @@
 .profile__name-section {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
 }
 
 @media screen and (max-width: 750px) {
     .profile__name-section {
         margin-top: 26px;
-        justify-content: center;
-        transform: translateX(14px);
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-transform: translateX(14px);
+            -ms-transform: translateX(14px);
+                transform: translateX(14px);
     }
 }

@@ -1,6 +1,7 @@
 .profile__name {
     max-width: 294px;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     font-weight: 500;
@@ -16,4 +17,4 @@
         font-size: 27px;
         line-height: 33px;
     }
-  }
+}

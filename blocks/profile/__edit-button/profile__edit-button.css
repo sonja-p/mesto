@@ -6,7 +6,9 @@
     border: none;
     cursor: pointer;
     margin-left: 18px;
-    transform: translateY(-9px);
+    -webkit-transform: translateY(-9px);
+        -ms-transform: translateY(-9px);
+            transform: translateY(-9px);
 }
 
 .profile__edit-button:hover {
@@ -19,6 +21,8 @@
         height: 18px;
         background-size: cover;
         margin-left: 10px;
-        transform: translateY(-7px);
+        -webkit-transform: translateY(-7px);
+            -ms-transform: translateY(-7px);
+                transform: translateY(-7px);
     }
-  }
+}
