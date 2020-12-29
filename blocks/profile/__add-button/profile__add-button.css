@@ -3,10 +3,8 @@
     background-color: inherit;
     width: 150px;
     height: 50px;
-    position: right;
     border: none;
     cursor: pointer;
-    padding: 0;
 }
 
 .profile__add-button:hover {

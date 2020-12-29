@@ -19,7 +19,7 @@
     .profile__edit-button {
         width: 18px;
         height: 18px;
-        background-size: cover;
+        background-size: contain;
         margin-left: 10px;
         -webkit-transform: translateY(-7px);
             -ms-transform: translateY(-7px);
