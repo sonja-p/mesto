@@ -1,6 +1,7 @@
 .button_type_edit-profile {
     background-image: url(../../../../images/edit-button.svg);
     background-color: inherit;
+    background-size: cover;
     width: 24px;
     height: 24px;
     margin-left: 18px;
@@ -17,7 +18,6 @@
     .button_type_edit-profile {
         width: 18px;
         height: 18px;
-        background-size: contain;
         margin-left: 10px;
         -webkit-transform: translateY(-7px);
             -ms-transform: translateY(-7px);
