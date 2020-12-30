@@ -1,6 +1,6 @@
-let openButton = document.querySelector('.profile__edit-button')
+let openButton = document.querySelector('.button_type_edit-profile')
 let popup = document.querySelector('.popup')
-let closeButton = popup.querySelector('.popup__close')
+let closeButton = popup.querySelector('.button_type_close')
 
 let togglePopup = () => {
     popup.classList.toggle('popup_opened')
