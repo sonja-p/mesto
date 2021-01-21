@@ -36,7 +36,7 @@
           </p>
         </footer>
 
-        <section class="popup">
+        <section class="popup popup_type_edit">
             <form class="popup__container" name="edit_profile">
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <input class="popup__input" id="profileName" name="profileName" type="text" value="Жак-Ив Кусто">
@@ -45,6 +45,17 @@
                 <button class="button button_type_close" type="reset"></button>
             </form>
         </section>
+
+        <section class="popup popup_type_add">
+          <form class="popup__container" name="add_card">
+              <h2 class="popup__title">Новое место</h2>
+              <input class="popup__input" id="profileName" name="profileName" type="text" value="Название">
+              <input class="popup__input" id="description" name="description" type="text" value="Ссылка на картинку">
+              <button class="button button_type_save" type="submit">Сохранить</button>
+              <button class="button button_type_close" type="reset"></button>
+          </form>
+      </section>
+
     </div>
 
     <template class="item_template">

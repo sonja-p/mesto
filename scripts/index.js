@@ -1,22 +1,23 @@
-let openButton = document.querySelector('.button_type_edit-profile')
-let popup = document.querySelector('.popup')
-let closeButton = popup.querySelector('.button_type_close')
+// попап для редактирования профиля
+let editButton = document.querySelector('.button_type_edit-profile')
+let popupEditProfile = document.querySelector('.popup_type_edit')
+let closeButton = popupEditProfile.querySelector('.button_type_close')
 
-let togglePopup = () => {
-    popup.classList.toggle('popup_opened')
+let togglePopupEditProfile = () => {
+    popupEditProfile.classList.toggle('popup_opened')
 }
 
-openButton.addEventListener('click', togglePopup)
-closeButton.addEventListener('click', togglePopup)
+editButton.addEventListener('click', togglePopupEditProfile)
+closeButton.addEventListener('click', togglePopupEditProfile)
 
-popup.addEventListener('click', (event) => {
+popupEditProfile.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
-        togglePopup()
+        togglePopupEditProfile()
     }
 })
 
-let form = popup.querySelector('.popup__container')
-let inputs = popup.querySelectorAll('input')
+let form = popupEditProfile.querySelector('.popup__container')
+let inputs = popupEditProfile.querySelectorAll('input')
 let profileName = document.querySelector('.profile__name')
 let description = document.querySelector('.profile__description')
 
@@ -24,8 +25,28 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
     profileName.textContent = inputs[0].value
     description.textContent = inputs[1].value
-    togglePopup()
+    togglePopupEditProfile()
 })
+
+// попап для добавления карточек
+
+let addButton = document.querySelector('.button_type_add-card');
+let popupAddCard = document.querySelector('.popup_type_add')
+let closeButton1 = popupAddCard.querySelector('.button_type_close')
+
+let togglePopupAddCard = () => {
+  popupAddCard.classList.toggle('popup_opened')
+}
+
+addButton.addEventListener('click', togglePopupAddCard)
+closeButton1.addEventListener('click', togglePopupAddCard)
+
+popupAddCard.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) {
+      togglePopupAddCard()
+  }
+})
+
 
 const initialCards = [
   {
@@ -64,10 +85,8 @@ function render() {
 
 function renderItem(element) {
   const card = itemTemplate.cloneNode(true);
-
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__title').textContent = element.name;
-  
   list.appendChild(card);
 }
 
