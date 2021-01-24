@@ -88,6 +88,7 @@ function renderItem(element) {
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__image').alt = element.name;
   card.querySelector('.element__title').innerText = element.name;
+  card.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
   list.appendChild(card);
 }
 
@@ -103,3 +104,8 @@ formAddCard.addEventListener('submit', (event) => {
 })
 
 render();
+
+function deleteCard(evt) {
+  evt.target.closest('.element').remove();
+}
+
