@@ -85,23 +85,40 @@ function render() {
 
 function renderItem(element) {
   const card = itemTemplate.cloneNode(true);
+
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__image').alt = element.name;
   card.querySelector('.element__title').innerText = element.name;
   card.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
+
+  card.querySelector('.button_type_like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('button_type_like_active');
+  })
+
   list.appendChild(card);
 }
 
 // добавим карточку
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
+  renderNewCard();
+  togglePopupAddCard();
+})
+
+function renderNewCard() {
   const newElement = itemTemplate.cloneNode(true);
+
   newElement.querySelector('.element__image').src = inputs[1].value;
   newElement.querySelector('.element__image').alt = inputs[0].value;
   newElement.querySelector('.element__title').innerText = inputs[0].value;
+  newElement.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
+
+  newElement.querySelector('.button_type_like').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('button_type_like_active');
+  })
+
   list.insertBefore(newElement, list.firstChild);
-  togglePopupAddCard()
-})
+}
 
 render();
 
@@ -109,3 +126,16 @@ function deleteCard(evt) {
   evt.target.closest('.element').remove();
 }
 
+
+/*function likeCard(evt) {
+  evt.target.closest('.button_type_like').src = '../../images/like-button-active.svg';
+}*/
+
+/*[itemTemplate.querySelectorAll('.button_type_like')].forEach(item => {
+
+  item.addEventListener('click', evt => {
+      evt.target.closest('.button_type_like')
+      .src('../../images/like-button-active.svg');
+  })
+})
+*/
