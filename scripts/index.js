@@ -95,6 +95,45 @@ function renderItem(element) {
     evt.target.classList.toggle('button_type_like_active');
   })
 
+
+//открытие просмотра фотографии
+
+  let popupViewImage = document.querySelector('.popup_type_view');
+
+
+  let togglePopupViewImage = () => {
+    popupViewImage.classList.toggle('popup_opened');    
+  }
+
+  let viewOn = () => {
+    popupViewImage.querySelector('.popup__image').src = element.link;
+    togglePopupViewImage()
+  }
+
+  card.querySelector('.element__image').addEventListener('click', viewOn);
+
+
+
+  /*const popupClose = document.querySelector('.button_type_close');
+
+  document.addEventListener('click', function(event) {
+    let popupClose = event.target.dataset.toggleId;
+    if (!popupClose) return;
+    let elem = document.querySelector('.popup');
+
+  })*/
+
+  document.querySelector('.button_type_close').addEventListener('click', function(evt) {
+    evt.target.closest.togglePopupViewImage;
+  }, true)
+
+
+  /*popupViewImage.addEventListener('click', (event) => {
+      if (event.target === event.currentTarget) {
+          togglePopupViewImage();
+      }
+  })*/
+
   list.appendChild(card);
 }
 
@@ -126,16 +165,3 @@ function deleteCard(evt) {
   evt.target.closest('.element').remove();
 }
 
-
-/*function likeCard(evt) {
-  evt.target.closest('.button_type_like').src = '../../images/like-button-active.svg';
-}*/
-
-/*[itemTemplate.querySelectorAll('.button_type_like')].forEach(item => {
-
-  item.addEventListener('click', evt => {
-      evt.target.closest('.button_type_like')
-      .src('../../images/like-button-active.svg');
-  })
-})
-*/
