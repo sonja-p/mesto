@@ -69,7 +69,6 @@ function render() {
 
 function renderCard(element) {
   const card = cardTemplate.cloneNode(true);
-
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__image').alt = element.name;
   card.querySelector('.element__title').innerText = element.name;
@@ -122,7 +121,6 @@ formAddCard.addEventListener('submit', (event) => {
 
 function renderNewCard() {
   const newElement = cardTemplate.cloneNode(true);
-
   newElement.querySelector('.element__image').src = inputs[1].value;
   newElement.querySelector('.element__image').alt = inputs[0].value;
   newElement.querySelector('.element__title').innerText = inputs[0].value;
