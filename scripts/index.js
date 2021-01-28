@@ -37,7 +37,7 @@ let addButton = document.querySelector('.button_type_add-card');
 let popupAddCard = document.querySelector('.popup_type_add');
 let inputs = popupAddCard.querySelectorAll('input');
 let closeButton1 = popupAddCard.querySelector('.button_type_close');
-let itemTemplate = document.querySelector('.item_template').content;
+let cardTemplate = document.querySelector('.card_template').content;
 let list = document.querySelector('.elements__list');
 let formAddCard = popupAddCard.querySelector('.popup__container');
 
@@ -80,11 +80,11 @@ popupAddCard.addEventListener('click', (event) => {
 
 //показываем 6 карточек на странице
 function render() {
-  initialCards.forEach(renderItem);
+  initialCards.forEach(renderCard);
 }
 
-function renderItem(element) {
-  const card = itemTemplate.cloneNode(true);
+function renderCard(element) {
+  const card = cardTemplate.cloneNode(true);
 
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__image').alt = element.name;
@@ -98,6 +98,7 @@ function renderItem(element) {
 //открытие просмотра фотографии
   let viewOn = () => {
     popupViewImage.querySelector('.popup__image').src = element.link;
+    popupViewImage.querySelector('.popup__image-title').innerText = element.name;
     togglePopupViewImage()
   }
 
@@ -124,7 +125,7 @@ popupViewImage.addEventListener('click', (event) => {
     }
 })
 
-// добавим карточку
+//добавим карточку
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
   renderNewCard();
@@ -132,7 +133,7 @@ formAddCard.addEventListener('submit', (event) => {
 })
 
 function renderNewCard() {
-  const newElement = itemTemplate.cloneNode(true);
+  const newElement = cardTemplate.cloneNode(true);
 
   newElement.querySelector('.element__image').src = inputs[1].value;
   newElement.querySelector('.element__image').alt = inputs[0].value;
