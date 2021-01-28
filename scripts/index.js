@@ -43,7 +43,7 @@ let formAddCard = popupAddCard.querySelector('.popup__container');
 
 
 
-// попап для редактирования профиля
+//попап для редактирования профиля
 let togglePopupEditProfile = () => {
     popupEditProfile.classList.toggle('popup_opened');
 }
@@ -64,7 +64,7 @@ formEditProfile.addEventListener('submit', (event) => {
     togglePopupEditProfile();
 })
 
-// попап для добавления карточек. переименовать closeButton1
+//попап для добавления карточек. переименовать closeButton1
 let togglePopupAddCard = () => {
   popupAddCard.classList.toggle('popup_opened');
 }
@@ -78,7 +78,7 @@ popupAddCard.addEventListener('click', (event) => {
   }
 })
 
-// показываем 6 карточек на странице
+//показываем 6 карточек на странице
 function render() {
   initialCards.forEach(renderItem);
 }
@@ -95,16 +95,7 @@ function renderItem(element) {
     evt.target.classList.toggle('button_type_like_active');
   })
 
-
 //открытие просмотра фотографии
-
-  let popupViewImage = document.querySelector('.popup_type_view');
-
-
-  let togglePopupViewImage = () => {
-    popupViewImage.classList.toggle('popup_opened');    
-  }
-
   let viewOn = () => {
     popupViewImage.querySelector('.popup__image').src = element.link;
     togglePopupViewImage()
@@ -112,30 +103,26 @@ function renderItem(element) {
 
   card.querySelector('.element__image').addEventListener('click', viewOn);
 
-
-
-  /*const popupClose = document.querySelector('.button_type_close');
-
-  document.addEventListener('click', function(event) {
-    let popupClose = event.target.dataset.toggleId;
-    if (!popupClose) return;
-    let elem = document.querySelector('.popup');
-
-  })*/
-
-  document.querySelector('.button_type_close').addEventListener('click', function(evt) {
-    evt.target.closest.togglePopupViewImage;
-  }, true)
-
-
-  /*popupViewImage.addEventListener('click', (event) => {
-      if (event.target === event.currentTarget) {
-          togglePopupViewImage();
-      }
-  })*/
-
   list.appendChild(card);
 }
+
+const popupViewImage = document.querySelector('.popup_type_view');
+
+let togglePopupViewImage = () => {
+  popupViewImage.classList.toggle('popup_opened');    
+}
+
+//закрытие попапа
+popupViewImage.querySelector('.button_type_close').addEventListener('click', function(event) {
+  let popup = event.target.closest('.popup_type_view');
+  togglePopupViewImage(popup);
+})
+
+popupViewImage.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+        togglePopupViewImage();
+    }
+})
 
 // добавим карточку
 formAddCard.addEventListener('submit', (event) => {  
@@ -156,7 +143,7 @@ function renderNewCard() {
     evt.target.classList.toggle('button_type_like_active');
   })
 
-  list.insertBefore(newElement, list.firstChild);
+  list.prepend(newElement);
 }
 
 render();
