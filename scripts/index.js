@@ -72,13 +72,14 @@ function renderCard(element) {
   card.querySelector('.element__image').src = element.link;
   card.querySelector('.element__image').alt = element.name;
   card.querySelector('.element__title').innerText = element.name;
+  
   card.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
-
+  
   card.querySelector('.button_type_like').addEventListener('click', function(evt) {
     evt.target.classList.toggle('button_type_like_active');
   })
 
-//открытие просмотра фотографии
+  //открытие просмотра фотографии. вынести из функции renderCard
   let viewOn = () => {
     popupViewImage.querySelector('.popup__image').src = element.link;
     popupViewImage.querySelector('.popup__image-title').innerText = element.name;
@@ -112,26 +113,23 @@ function closePopup(event){
   })
 }
 
+function renderNewCard() {
+  let nameInput = inputs[0].value;
+  let linkInput = inputs[1].value;
+  const newElement = {
+    name: nameInput,
+    link: linkInput,
+  }
+  
+  renderCard(newElement);
+}
+
 //добавим карточку
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
   renderNewCard();
   togglePopupAddCard();
 })
-
-function renderNewCard() {
-  const newElement = cardTemplate.cloneNode(true);
-  newElement.querySelector('.element__image').src = inputs[1].value;
-  newElement.querySelector('.element__image').alt = inputs[0].value;
-  newElement.querySelector('.element__title').innerText = inputs[0].value;
-  newElement.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
-
-  newElement.querySelector('.button_type_like').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('button_type_like_active');
-  })
-  
-  list.prepend(newElement);
-}
 
 render();
 
