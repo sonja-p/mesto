@@ -108,22 +108,20 @@ const togglePopupViewImage = () => {
 }
 
 
-//закрытие попапа
-document.addEventListener('click', closePopup);
+//закрытие попапов
+popupAddCard.querySelector('.button_type_close').addEventListener('click', () => {
+  togglePopupAddCard();
+})
 
-function closePopup(event){
-  const popup = event.target.closest('.popup');
-  const closeButton = event.target.closest('.button_type_close');
-  if (!closeButton) return;
-  popup.classList.toggle('popup_opened');
+popupViewImage.querySelector('.button_type_close').addEventListener('click', () => {
+  togglePopupViewImage();
+})
 
-  popup.addEventListener('click', (event) => {
-    if (event.target === event.currentTarget) {
-      popup.classList.toggle('popup_opened');
-    }
-  })
-}
+popupEditProfile.querySelector('.button_type_close').addEventListener('click', () => {
+  togglePopupEditProfile();
+})
 
+//добавим карточку
 function renderNewCard() {
   const nameInput = inputs[0].value;
   const linkInput = inputs[1].value;
@@ -136,7 +134,6 @@ function renderNewCard() {
   list.prepend(newCard);
 }
 
-//добавим карточку
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
   renderNewCard();
