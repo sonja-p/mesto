@@ -26,24 +26,27 @@ const initialCards = [
 ];
 
 
-let editButton = document.querySelector('.button_type_edit-profile');
-let popupEditProfile = document.querySelector('.popup_type_edit');
-let formEditProfile = popupEditProfile.querySelector('.popup__container');
-let inputsProfile = popupEditProfile.querySelectorAll('input');
-let profileName = document.querySelector('.profile__name');
-let description = document.querySelector('.profile__description');
-let addButton = document.querySelector('.button_type_add-card');
-let popupAddCard = document.querySelector('.popup_type_add');
-let inputs = popupAddCard.querySelectorAll('input');
-let cardTemplate = document.querySelector('.card_template').content;
-let list = document.querySelector('.elements__list');
-let formAddCard = popupAddCard.querySelector('.popup__container');
+const editButton = document.querySelector('.button_type_edit-profile');
+const popupEditProfile = document.querySelector('.popup_type_edit');
+const formEditProfile = popupEditProfile.querySelector('.popup__container');
+const inputsProfile = popupEditProfile.querySelectorAll('input');
+const profileName = document.querySelector('.profile__name');
+const description = document.querySelector('.profile__description');
+const addButton = document.querySelector('.button_type_add-card');
+const popupAddCard = document.querySelector('.popup_type_add');
+const inputs = popupAddCard.querySelectorAll('input');
+const cardTemplate = document.querySelector('.card_template').content;
+const list = document.querySelector('.elements__list');
+const formAddCard = popupAddCard.querySelector('.popup__container');
 
 
+const togglePopup = (popup) => {
+  popup.classList.toggle('popup_opened');
+}
 
 //попап для редактирования профиля
-let togglePopupEditProfile = () => {
-    popupEditProfile.classList.toggle('popup_opened');
+const togglePopupEditProfile = () => {
+  togglePopup(popupEditProfile);
 }
 
 editButton.addEventListener('click', togglePopupEditProfile);
@@ -56,8 +59,8 @@ formEditProfile.addEventListener('submit', (event) => {
 })
 
 //попап для добавления карточек.
-let togglePopupAddCard = () => {
-  popupAddCard.classList.toggle('popup_opened');
+const togglePopupAddCard = () => {
+  togglePopup(popupAddCard);
 }
 
 addButton.addEventListener('click', togglePopupAddCard);
@@ -80,7 +83,7 @@ function renderCard(element) {
   })
 
   //открытие просмотра фотографии. вынести из функции renderCard
-  let viewOn = () => {
+  const viewOn = () => {
     popupViewImage.querySelector('.popup__image').src = element.link;
     popupViewImage.querySelector('.popup__image-title').innerText = element.name;
     togglePopupViewImage()
@@ -92,8 +95,8 @@ function renderCard(element) {
 
 const popupViewImage = document.querySelector('.popup_type_view');
 
-let togglePopupViewImage = () => {
-  popupViewImage.classList.toggle('popup_opened');    
+const togglePopupViewImage = () => {
+  togglePopup(popupViewImage);
 }
 
 
@@ -101,8 +104,8 @@ let togglePopupViewImage = () => {
 document.addEventListener('click', closePopup);
 
 function closePopup(event){
-  let popup = event.target.closest('.popup');
-  let closeButton = event.target.closest('.button_type_close');
+  const popup = event.target.closest('.popup');
+  const closeButton = event.target.closest('.button_type_close');
   if (!closeButton) return;
   popup.classList.toggle('popup_opened');
 
@@ -114,8 +117,8 @@ function closePopup(event){
 }
 
 function renderNewCard() {
-  let nameInput = inputs[0].value;
-  let linkInput = inputs[1].value;
+  const nameInput = inputs[0].value;
+  const linkInput = inputs[1].value;
   const newElement = {
     name: nameInput,
     link: linkInput,
