@@ -132,8 +132,8 @@ function renderNewCard() {
     link: linkInput,
   }
   
-  createCard(newElement);
-  list.prepend(newElement)
+  const newCard = createCard(newElement);
+  list.prepend(newCard);
 }
 
 //добавим карточку
