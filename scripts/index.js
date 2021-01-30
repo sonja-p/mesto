@@ -38,7 +38,9 @@ const inputs = popupAddCard.querySelectorAll('input');
 const cardTemplate = document.querySelector('.card_template').content;
 const list = document.querySelector('.elements__list');
 const formAddCard = popupAddCard.querySelector('.popup__container');
-
+const popupViewImage = document.querySelector('.popup_type_view');
+const popupImage = popupViewImage.querySelector('.popup__image');
+const popupImageTitle = popupViewImage.querySelector('.popup__image-title');
 
 const togglePopup = (popup) => {
   popup.classList.toggle('popup_opened');
@@ -71,10 +73,18 @@ function render() {
 }
 
 function renderCard(element) {
+  const card = createCard(element);
+
+  list.appendChild(card);
+}
+
+function createCard(element) {
   const card = cardTemplate.cloneNode(true);
-  card.querySelector('.element__image').src = element.link;
-  card.querySelector('.element__image').alt = element.name;
-  card.querySelector('.element__title').innerText = element.name;
+  const elementImage = card.querySelector('.element__image');
+
+  elementImage.src = element.link;
+  elementImage.alt = element.name;
+  card.querySelector('.element__title').textContent = element.name;
   
   card.querySelector('.button_type_delete-card').addEventListener('click', deleteCard);
   
@@ -82,18 +92,16 @@ function renderCard(element) {
     evt.target.classList.toggle('button_type_like_active');
   })
 
-  //открытие просмотра фотографии. вынести из функции renderCard
-  const viewOn = () => {
-    popupViewImage.querySelector('.popup__image').src = element.link;
-    popupViewImage.querySelector('.popup__image-title').innerText = element.name;
+  //открытие просмотра фотографии.
+  elementImage.addEventListener('click', () => {
+    popupImage.src = element.link;
+    popupImageTitle.textContent = element.name;
     togglePopupViewImage()
-  }
-
-  card.querySelector('.element__image').addEventListener('click', viewOn);
-  list.appendChild(card);
+  });
+  
+  return card;
 }
 
-const popupViewImage = document.querySelector('.popup_type_view');
 
 const togglePopupViewImage = () => {
   togglePopup(popupViewImage);
@@ -124,7 +132,8 @@ function renderNewCard() {
     link: linkInput,
   }
   
-  renderCard(newElement);
+  createCard(newElement);
+  list.prepend(newElement)
 }
 
 //добавим карточку
