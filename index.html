@@ -43,19 +43,19 @@
                 <span class="profile-name-error popup__input-error"></span>
                 <input class="popup__input" id="description" name="description" type="text" value="Исследователь океана" minlength="2" maxlength="200" required>
                 <span class="description-error popup__input-error"></span>
-                <button class="button button_type_save" type="submit">Сохранить</button>
+                <button class="button popup__save-button" type="submit">Сохранить</button>
                 <button class="button button_type_close" type="reset"></button>
             </form>
         </section>
 
-        <section class="popup popup_type_add" novalidate>
-          <form class="popup__container" id="form" name="add_card">
+        <section class="popup popup_type_add">
+          <form class="popup__container" id="form" name="add_card"  novalidate>
               <h2 class="popup__title">Новое место</h2>
               <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="image-name-error popup__input-error"></span>
-              <input class="popup__input" id="image-link" name="image-link" type="link" placeholder="Ссылка на картинку" required>
+              <input class="popup__input" id="image-link" name="image-link" type="url" placeholder="Ссылка на картинку" required>
               <span class="image-link-error popup__input-error"></span>
-              <button class="button button_type_save" type="submit">Сохранить</button>
+              <button class="button popup__save-button" type="submit">Создать</button>
               <button class="button button_type_close" type="reset"></button>
           </form>
         </section>
