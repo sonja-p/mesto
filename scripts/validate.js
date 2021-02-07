@@ -37,7 +37,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
   const buttonElement = formElement.querySelector('.popup__save-button');
-  toggleButtonState(inputList, buttonElement);
+  
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       toggleButtonState(inputList, buttonElement);
@@ -45,14 +45,14 @@ setEventListeners = (formElement) => {
     })
   })
 }
-
+     
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll('.popup'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', function (evt) {
      evt.preventDefault();
     });
-
+    
     setEventListeners(formElement);
   });
 };
