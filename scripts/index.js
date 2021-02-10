@@ -49,7 +49,7 @@ const openPopup = (popup) => {
 }
 
 const handleEscClose = (evt) => {
-  const popupOpened = evt.target.closest('.popup');
+  const popupOpened = document.querySelector('.popup_opened');
   if (evt.keyCode === 27) {
     closePopup(popupOpened);
   }
@@ -64,7 +64,7 @@ const handleOverlayClose = (evt) => {
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  popup.removeEventListener('keydown', handleEscClose);
+  window.removeEventListener('keydown', handleEscClose);
   popup.removeEventListener('mousedown', handleOverlayClose);
 }
 
@@ -140,11 +140,19 @@ function renderNewCard() {
   list.prepend(newCard);
 }
 
+const resetPopupAddCard = () => {
+  const submitButton = popupAddCard.querySelector('.popup__save-button');
+  formAddCard.reset();
+  submitButton.disabled = true;
+  submitButton.classList.add('popup__save-button_disabled');
+};
+
+
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
   renderNewCard();
   closePopup(popupAddCard);
-  formAddCard.reset();
+  resetPopupAddCard();
 })
 
 render();
