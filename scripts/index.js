@@ -49,9 +49,9 @@ const openPopup = (popup) => {
 }
 
 const handleEscClose = (evt) => {
-//найти открытое модальное окно и передать его параметром в функцию закрытия попапа
+  const popupOpened = evt.target.closest('.popup');
   if (evt.keyCode === 27) {
-    closePopup(popup);
+    closePopup(popupOpened);
   }
 }
 
