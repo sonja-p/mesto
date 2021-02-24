@@ -1,3 +1,4 @@
+import Card from './Card.js'
 const initialCards = [
   {
     name: 'Архыз',
@@ -33,12 +34,10 @@ const profileName = document.querySelector('.profile__name');
 const description = document.querySelector('.profile__description');
 const addButton = document.querySelector('.button_type_add-card');
 const popupAddCard = document.querySelector('.popup_type_add');
-const cardTemplate = document.querySelector('.card_template').content;
-const list = document.querySelector('.elements__list');
 const formAddCard = popupAddCard.querySelector('.popup__container');
 const popupViewImage = document.querySelector('.popup_type_view');
-const popupImage = popupViewImage.querySelector('.popup__image');
-const popupImageTitle = popupViewImage.querySelector('.popup__image-title');
+//const popupImage = popupViewImage.querySelector('.popup__image');
+//const popupImageTitle = popupViewImage.querySelector('.popup__image-title');
 
 
 
@@ -91,8 +90,17 @@ popupEditProfile.querySelector('.button_type_close').addEventListener('click', (
   closePopup(popupEditProfile);
 })
 
+////////////////////////////////////////////////////////////////////
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  const cardElement = card.generateCard();
+  
+  document.querySelector('.elements__list').append(cardElement);
+})
+
+
 //показываем 6 карточек на странице
-function render() {
+/*function render() {
   initialCards.forEach(renderCard);
 }
 
@@ -138,15 +146,14 @@ function renderNewCard() {
   
   const newCard = getCardElement(newElement);
   list.prepend(newCard);
-}
-
+}*/
+//////////////////////////////////////////////////////////////////////////
 const resetPopupAddCard = () => {
   const submitButton = popupAddCard.querySelector('.popup__save-button');
   formAddCard.reset();
   submitButton.disabled = true;
   submitButton.classList.add('popup__save-button_disabled');
 };
-
 
 formAddCard.addEventListener('submit', (event) => {  
   event.preventDefault();
@@ -155,8 +162,10 @@ formAddCard.addEventListener('submit', (event) => {
   resetPopupAddCard();
 })
 
-render();
+//render();
 
-function deleteCard(evt) {
+/*function deleteCard(evt) {
   evt.target.closest('.element').remove();
-}
+}*/
+
+export { openPopup }

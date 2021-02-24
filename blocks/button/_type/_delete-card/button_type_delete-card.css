@@ -6,7 +6,8 @@
     right: 16.28px;
     background-image: url(../../../../images/delete-button.svg);
     background-position: center;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-color: rgba(0, 0, 0, 0);
 }
 

@@ -37,7 +37,7 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   }
 };
 
-setEventListeners = (formElement, config) => {
+const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
