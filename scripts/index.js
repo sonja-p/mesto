@@ -1,4 +1,5 @@
-import Card from './Card.js'
+import Card from './Card.js';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -36,9 +37,6 @@ const addButton = document.querySelector('.button_type_add-card');
 const popupAddCard = document.querySelector('.popup_type_add');
 const formAddCard = popupAddCard.querySelector('.popup__container');
 const popupViewImage = document.querySelector('.popup_type_view');
-//const popupImage = popupViewImage.querySelector('.popup__image');
-//const popupImageTitle = popupViewImage.querySelector('.popup__image-title');
-
 
 
 const openPopup = (popup) => {
@@ -77,7 +75,6 @@ formEditProfile.addEventListener('submit', (event) => {
     closePopup(popupEditProfile);
 })
 
-//закрытие попапов
 popupAddCard.querySelector('.button_type_close').addEventListener('click', () => {
   closePopup(popupAddCard);
 })
@@ -90,7 +87,6 @@ popupEditProfile.querySelector('.button_type_close').addEventListener('click', (
   closePopup(popupEditProfile);
 })
 
-////////////////////////////////////////////////////////////////////
 initialCards.forEach((item) => {
   const card = new Card(item);
   const cardElement = card.generateCard();
