@@ -22,7 +22,7 @@ const openPopup = (popup) => {
 const handleEscClose = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
   const esc = 27;
-  
+
   if (evt.keyCode === esc) {
     closePopup(popupOpened);
   }
@@ -63,11 +63,13 @@ popupEditProfile.querySelector('.button_type_close').addEventListener('click', (
   closePopup(popupEditProfile);
 })
 
-initialCards.forEach((item) => {
+const generateCardElement = (item) => {
   const card = new Card(item);
-  
-  const cardElement = card.generateCard();
-  
+  return card.generateCard();
+}
+
+initialCards.forEach((item) => {
+  const cardElement = generateCardElement(item);
   document.querySelector('.elements__list').append(cardElement);
 })
 
@@ -84,8 +86,7 @@ function renderNewCard() {
     link: document.querySelector('input[name=image-link]').value,
   }
   
-  const newCard = new Card(data);
-  const newCardElement = newCard.generateCard();
+  const newCardElement = generateCardElement(data);
 
   document.querySelector('.elements__list').prepend(newCardElement);
 }
