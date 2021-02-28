@@ -21,7 +21,9 @@ const openPopup = (popup) => {
 
 const handleEscClose = (evt) => {
   const popupOpened = document.querySelector('.popup_opened');
-  if (evt.keyCode === 27) {
+  const esc = 27;
+  
+  if (evt.keyCode === esc) {
     closePopup(popupOpened);
   }
 }
@@ -94,7 +96,6 @@ formAddCard.addEventListener('submit', (event) => {
   closePopup(popupAddCard);
   resetPopupAddCard();
 })
-
 
 const config = {
   formSelector: '.popup',
