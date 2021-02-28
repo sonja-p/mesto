@@ -25,8 +25,10 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
   
-    this._element.querySelector('.element__image').src = this._image;
-    this._element.querySelector('.element__image').alt = this._text;
+    const elementImage = this._element.querySelector('.element__image');
+
+    elementImage.src = this._image;
+    elementImage.alt = this._text;
     this._element.querySelector('.element__title').textContent = this._text;
         
     return this._element;
@@ -43,7 +45,7 @@ export default class Card {
     openPopup(popupViewImage);
   };
   
-  _handleDeleteCard(evt) {
+  _handleDeleteCard() {
     evt.target.closest('.element').remove();
   }
   
