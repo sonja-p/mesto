@@ -68,18 +68,3 @@ export default class FormValidator {
       this._setEventListeners();
   };
 }
-
-  const config = {
-    formSelector: '.popup',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-button',
-    inactiveButtonClass: 'popup__save-button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_visible'
-  }
-
-  const formEditProfileValidator = new FormValidator(config, '.popup_type_edit');
-  const formAddCardValidator = new FormValidator(config, '.popup_type_add');
-
-  formEditProfileValidator.enableValidation();
-  formAddCardValidator.enableValidation();
