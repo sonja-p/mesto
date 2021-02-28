@@ -45,7 +45,7 @@ export default class Card {
     openPopup(popupViewImage);
   };
   
-  _handleDeleteCard() {
+  _handleDeleteCard(evt) {
     evt.target.closest('.element').remove();
   }
   
