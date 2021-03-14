@@ -1,5 +1,6 @@
 import Card from '../scripts/Card.js';
 import FormValidator from '../scripts/FormValidator.js';
+import Section from '../scripts/Section.js';
 import { initialCards } from '../scripts/data.js';
 
 const editButton = document.querySelector('.button_type_edit-profile');
@@ -68,10 +69,10 @@ const generateCardElement = (item) => {
   return card.generateCard();
 }
 
-initialCards.forEach((item) => {
+/*initialCards.forEach((item) => {
   const cardElement = generateCardElement(item);
   document.querySelector('.elements__list').append(cardElement);
-})
+})*/
 
 const resetPopupAddCard = () => {
   const submitButton = popupAddCard.querySelector('.popup__save-button');
@@ -112,5 +113,37 @@ const formAddCardValidator = new FormValidator(config, '.popup_type_add');
 
 formEditProfileValidator.enableValidation();
 formAddCardValidator.enableValidation();
+///////////////////////////////////////////////////////////////
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (cardItem) => {
+    /*const card = item.isOwner
+      ? new Card(cardItem, '.card-template_type_user')
+      : new Card(cardItem, '.card-template_type_default');*/
+
+    const card = new Card(cardItem, '.card_template');
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+    },
+  },
+  '.elements__list'
+);
+
+cardList.renderItems();
+
+/*const newCard = new Section({
+  //items: data,
+  renderer: (data) => {
+    const card = new Card(data, '.card_template');
+    const cardElement = card.generateCard();
+    cardList.addItem(cardElement);
+    },
+  },
+  '.card_template'
+);*/
+
+
+
 
 export { openPopup }
