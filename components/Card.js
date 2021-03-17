@@ -1,14 +1,8 @@
-import { openPopup } from '../src/index.js';
-
-const popupViewImage = document.querySelector('.popup_type_view');
-const popupImage = popupViewImage.querySelector('.popup__image');
-const popupImageTitle = popupViewImage.querySelector('.popup__image-title');
-
-
 export default class Card {
-  constructor(data, template) {
+  constructor(data, { handleCardClick }, template) {
     this._text = data.name;
     this._image = data.link;
+    this._handleCardClick = handleCardClick;
     this._template = template;
   }
   
@@ -37,14 +31,7 @@ export default class Card {
   _handleLikeIcon(evt) {
     evt.target.classList.toggle('button_type_like_active');
   };
-  
-  _handlePreviewPicture() {
-    popupImage.src = this._image;
-    popupImage.alt = `${this._text}`;
-    popupImageTitle.textContent = this._text;
-    openPopup(popupViewImage);
-  };
-  
+
   _handleDeleteCard(evt) {
     evt.target.closest('.element').remove();
   }
@@ -54,8 +41,8 @@ export default class Card {
       this._handleLikeIcon(evt)
     });
       
-    this._element.querySelector('.element__image').addEventListener('click', () => {
-      this._handlePreviewPicture()
+    this._element.querySelector('.element__image').addEventListener('click', (evt) => {
+      this._handleCardClick(evt)
     });
   
     this._element.querySelector('.button_type_delete-card').addEventListener('click', (evt) => {
