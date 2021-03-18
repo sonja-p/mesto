@@ -5,10 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import { initialCards } from '../utils/data.js';
-import { config } from '../utils/constants.js';
-
-const addButton = document.querySelector('.button_type_add-card');
-const editButton = document.querySelector('.button_type_edit-profile');
+import { config, addButton, editButton } from '../utils/constants.js';
 
 
 const cardList = new Section({
