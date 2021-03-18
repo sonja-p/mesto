@@ -1,33 +1,32 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-    conctructor(popupSelector, renderer) {
-        this._popupSelector = document.querySelector(popupSelector);
+    constructor({ renderer }, popupSelector) {
+        super(popupSelector);
+        this._form = this._popup.querySelector('.popup__container');
         this._renderer = renderer;
     }
 
     _getInputValues() {
         //собирает данные всех полей формы
-        profileName.textContent = document.querySelector('input[name=profile-name]').value;
-        description.textContent = document.querySelector('input[name=description]').value;
+        let formData = new FormData([form]);
+        return(formData);
     }
 
     setEventListeners() {
         super.setEventListeners();
 
         //добавить обработчик сабмита формы
-        formEditProfile.addEventListener('submit', (event) => {
+        this._form.addEventListener('submit', (event) => {
             event.preventDefault();
-            _getInputValues();
-            closePopup();
+            this._renderer(this._getInputValues);
+            this.close();
         })
     }
 
     close() {
         super.close();
-
-        //при закрытии попапа форма должна ещё и сбрасываться
-        this.reset();
+        this._form.reset();
     }
 }
 
