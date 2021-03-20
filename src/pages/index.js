@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import { initialCards } from '../utils/data.js';
-import { config, addButton, editButton } from '../utils/constants.js';
+import { config, addButton, editButton, nameInput, descriptionInput } from '../utils/constants.js';
 import './index.css';
 
 const popupWithImage = new PopupWithImage('.popup_type_view');
@@ -39,7 +39,7 @@ const userInfo = new UserInfo({
 
 const popupEditProfile = new PopupWithForm({
   renderer: () => {
-    userInfo.setUserInfo('input[name=profile-name]', 'input[name=description]');
+    userInfo.setUserInfo(nameInput.value, descriptionInput.value);
   }
 },'.popup_type_edit'
 );
