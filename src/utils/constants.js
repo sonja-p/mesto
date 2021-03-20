@@ -11,5 +11,7 @@ const addButton = document.querySelector('.button_type_add-card');
 const editButton = document.querySelector('.button_type_edit-profile');
 const nameInput = document.querySelector('input[name=profile-name]');
 const professionInput = document.querySelector('input[name=description]');
+const imageLinkInput = document.querySelector('input[name=image-link]');
+const imageTitleInput = document.querySelector('input[name=image-name]');
 
-export { config, addButton, editButton, nameInput, professionInput }
+export { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput }

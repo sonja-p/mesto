@@ -5,7 +5,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import { initialCards } from '../utils/data.js';
-import { config, addButton, editButton, nameInput, professionInput } from '../utils/constants.js';
+import { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput } from '../utils/constants.js';
 import './index.css';
 
 const popupWithImage = new PopupWithImage('.popup_type_view');
@@ -57,8 +57,8 @@ editButton.addEventListener('click', () => {
 const popupAddCard = new PopupWithForm({ 
   renderer: () => {
     const data = {
-      link: document.querySelector('input[name=image-link]').value,
-      name: document.querySelector('input[name=image-name]').value
+      link: imageLinkInput.value,
+      name: imageTitleInput.value
     }
     const newCard = createCard(data);
     cardList.addNewItem(newCard);
