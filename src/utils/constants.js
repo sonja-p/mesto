@@ -10,6 +10,6 @@ const config = {
 const addButton = document.querySelector('.button_type_add-card');
 const editButton = document.querySelector('.button_type_edit-profile');
 const nameInput = document.querySelector('input[name=profile-name]');
-const descriptionInput = document.querySelector('input[name=description]');
+const professionInput = document.querySelector('input[name=description]');
 
-export { config, addButton, editButton, nameInput, descriptionInput }
+export { config, addButton, editButton, nameInput, professionInput }
