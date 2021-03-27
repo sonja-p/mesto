@@ -2,6 +2,7 @@ export default class Card {
   constructor(data, template, { handleCardClick }, api) {
     this._text = data.name;
     this._image = data.link;
+    this._likes = data.likes.length;
     this._handleCardClick = handleCardClick;
     this._template = template;
     this._api = api;
@@ -25,6 +26,7 @@ export default class Card {
     elementImage.src = this._image;
     elementImage.alt = this._text;
     this._element.querySelector('.element__title').textContent = this._text;
+    this._element.querySelector('.element__likes').textContent = this._likes;
         
     return this._element;
   }
