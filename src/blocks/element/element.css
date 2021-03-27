@@ -1,12 +1,13 @@
 .element {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 38px;
-    grid-template-columns: 1fr 38px;
+    -ms-grid-columns: 1fr 42px;
+    grid-template-columns: 1fr 42px;
     -ms-grid-rows: 282px 1fr;
     grid-template-rows: 282px 1fr;
         grid-template-areas: 'image image'
-    'title like';
+    'title like'
+    'title count';
     background-color: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;

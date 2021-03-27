@@ -1,11 +1,12 @@
 .button_type_like {
     grid-area: like;
-    width: 20.76px;
-    height: 18.13px;
+    width: 22px;
+    height: 19px;
     background-image: url(../../../../images/like-button.svg);
     background-size: cover;
     background-color: inherit;
     padding: 0;
+    margin-top: 21px;
 }
 
 .button_type_like:hover {
