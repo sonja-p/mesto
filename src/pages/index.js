@@ -3,6 +3,7 @@ import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupConfirmDelete from '../components/PopupConfirmDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 import { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput } from '../utils/constants.js';
@@ -57,12 +58,21 @@ editButton.addEventListener('click', () => {
 const popupWithImage = new PopupWithImage('.popup_type_view');
 popupWithImage.setEventListeners();
 
+const popupDeleteCard = new PopupConfirmDelete('.popup_type_delete');
+popupDeleteCard.setEventListeners();
+
 function createCard(item, api) {
   const card = new Card(item, '.card_template', { 
     handleCardClick: () => {
       popupWithImage.open(item.link, item.name);
     }
+  }, { 
+    handleCardDelete: (event) => {
+      popupDeleteCard.open(event)
+    }
   }, api);
+
+
   return card.generateCard();
 }
 
