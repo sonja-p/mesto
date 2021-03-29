@@ -2,13 +2,12 @@
     constructor({ items, renderer }, containerSelector, api) {
         this._renderedItems = items;
         this._renderer = renderer; 
-    
         this._container = document.querySelector(containerSelector);
         this._api = api;
     }
 
     renderItems() {
-        this._renderedItems.forEach(item => this._renderer(item, this._api));
+        this._renderedItems.forEach(item => this._renderer(item));
     }
     
     addItem(element) {

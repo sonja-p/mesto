@@ -30,6 +30,7 @@ export default class Api {
         })
         .then(res => this._parseResponse(res))
         .then((result) => {
+        console.log(result)
         return(result);
         })
         .catch(err => {

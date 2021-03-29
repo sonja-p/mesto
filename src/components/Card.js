@@ -3,6 +3,7 @@ export default class Card {
     this._text = data.name;
     this._image = data.link;
     this._likes = data.likes.length;
+    this._owner = data.owner;
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
     this._template = template;
@@ -28,6 +29,15 @@ export default class Card {
     elementImage.alt = this._text;
     this._element.querySelector('.element__title').textContent = this._text;
     this._element.querySelector('.element__likes').textContent = this._likes;
+    this._button = this._element.querySelector('.button_type_delete-card');
+    
+    if (this._owner._id !== '22d3160f22696e6f4d344887') {
+      this._button.disabled = true;
+      this._button.classList.add('button_type_delete-card_disable');
+    } else {
+      this._button.disabled = false;
+      this._button.classList.remove('button_type_delete-card_disable');
+    }
         
     return this._element;
   }

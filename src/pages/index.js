@@ -22,8 +22,8 @@ const api = new Api(options);
 const userInfo = new UserInfo({
   nameSelector: '.profile__name', 
   infoSelector: '.profile__description',
-  avatarSelector: '.profile__avatar'
-});
+  avatarSelector: '.profile__avatar',
+}, api);
 
 api.getUserInfo()
   .then(data => {
@@ -43,7 +43,7 @@ const popupEditProfile = new PopupWithForm({
         console.log('Ошибка при загрузке информации пользователя', err.message);
       });
   }
-},'.popup_type_edit'
+},'.popup_type_edit', api
 );
 
 popupEditProfile.setEventListeners();
@@ -61,7 +61,7 @@ popupWithImage.setEventListeners();
 const popupDeleteCard = new PopupConfirmDelete('.popup_type_delete');
 popupDeleteCard.setEventListeners();
 
-function createCard(item, api) {
+function createCard(item) {
   const card = new Card(item, '.card_template', { 
     handleCardClick: () => {
       popupWithImage.open(item.link, item.name);
@@ -69,8 +69,8 @@ function createCard(item, api) {
   }, { 
     handleCardDelete: (event) => {
       popupDeleteCard.open(event)
-    }
-  }, api);
+    }, api
+  });
 
 
   return card.generateCard();
@@ -80,8 +80,8 @@ api.getInitialCards()
   .then((data) => {
     const cardList = new Section({
       items: data,
-      renderer: (cardItem, api) => {
-        const cardElement = createCard(cardItem, api);
+      renderer: (cardItem) => {
+        const cardElement = createCard(cardItem);
         cardList.addItem(cardElement);
         },
       },
@@ -104,7 +104,7 @@ const popupAddCard = new PopupWithForm({
         console.log('Ошибка при загрузке карточки', err.message);
       });
     }
-  },'.popup_type_add'
+  },'.popup_type_add', api
 );
 
 popupAddCard.setEventListeners();

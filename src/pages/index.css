@@ -33,6 +33,7 @@
 @import url(../blocks/button/_type/_edit-profile/button_type_edit-profile.css);
 @import url(../blocks/button/_type/_like/button_type_like.css);
 @import url(../blocks/button/_type/_delete-card/button_type_delete-card.css);
+@import url(../blocks/button/_type/_delete-card/_disable/button_type_delete-card_disable.css);
 @import url(../blocks/button/_type/_like/_active/button_type_like_active.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__view/popup__view.css);
