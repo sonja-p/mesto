@@ -6,6 +6,10 @@ export default class UserInfo {
         this._api = api;
     }
 
+    changeAvatar(link) {
+        this._api.changeAvatar(link)
+    }
+
     getUserInfo() {
         return { name: this._profileName.textContent,
             profession: this._profileProfession.textContent

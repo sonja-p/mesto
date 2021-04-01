@@ -130,12 +130,12 @@ export default class Api {
         });
     }
 
-    addNewAvatar() {
-        return fetch(`${this._url}/users/me/avatarreturn`, {
+    changeAvatar(link) {
+        return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: ''
+                avatar: `${link}`
             })
         })
         .then(res => this._parseResponse(res))
@@ -143,7 +143,7 @@ export default class Api {
             console.log(result);
         })
         .catch(err => {
-            console.log('Ошибка при загрузке карточки', err.message);
+            console.log('Ошибка при обновлении аватара пользователя', err.message);
         });
     }
 }
