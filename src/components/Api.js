@@ -30,7 +30,6 @@ export default class Api {
         })
         .then(res => this._parseResponse(res))
         .then((result) => {
-        console.log(result)
         return(result);
         })
         .catch(err => {
@@ -85,17 +84,22 @@ export default class Api {
             })
         })
         .then(res => this._parseResponse(res))
-        .then((result) => {
-            console.log(result);
-        })
         .catch(err => {
             console.log('Ошибка при загрузке карточки', err.message);
         });
     }
 
-    /*handleDeleteCard() {
-
-    }*/
+    handleDeleteCard(id) {
+        //Вместо cardId в URL нужно подставить свойство _id соответствующей карточки.
+        return fetch(`${this._url}/cards/${id}`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+        .then(res => this._parseResponse(res))
+        .catch(err => {
+            console.log('Ошибка при удалении карточки', err.message);
+        });
+    }
 
     handleLikeCard() {
         //Вместо cardId в URL нужно подставить свойство _id соответствующей карточки.

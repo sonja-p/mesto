@@ -58,7 +58,7 @@ editButton.addEventListener('click', () => {
 const popupWithImage = new PopupWithImage('.popup_type_view');
 popupWithImage.setEventListeners();
 
-const popupDeleteCard = new PopupConfirmDelete('.popup_type_delete');
+const popupDeleteCard = new PopupConfirmDelete('.popup_type_delete', api);
 popupDeleteCard.setEventListeners();
 
 function createCard(item) {
@@ -67,11 +67,10 @@ function createCard(item) {
       popupWithImage.open(item.link, item.name);
     }
   }, { 
-    handleCardDelete: (event) => {
-      popupDeleteCard.open(event)
-    }, api
-  });
-
+    handleSubmitDelete: (id) => {
+      popupDeleteCard.open(id)
+    }
+  }, api);
 
   return card.generateCard();
 }
@@ -87,8 +86,9 @@ api.getInitialCards()
       },
       '.elements__list', api
     );
-    cardList.renderItems()
+    return cardList
   })
+  .then((res) => res.renderItems())
   .catch(err => {
     console.log('Ошибка при загрузке карточек', err.message);
   });
@@ -100,6 +100,8 @@ const popupAddCard = new PopupWithForm({
       link: imageLinkInput.value
     };
     api.addNewCard(inputData)
+      .then((res) => createCard(res))
+      .then((res) => document.querySelector('.elements__list').prepend(res))
       .catch(err => {
         console.log('Ошибка при загрузке карточки', err.message);
       });

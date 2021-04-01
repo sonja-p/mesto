@@ -14,9 +14,9 @@
         this._container.append(element);
     }
 
-    addNewItem(element) {
+    /*addNewItem(element) {
         this._container.prepend(element);
-    }
+    }*/ 
 }
 
 /*Создайте класс Section, который отвечает за отрисовку элементов на странице. 
