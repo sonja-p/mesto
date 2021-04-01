@@ -45,13 +45,41 @@ export default class Card {
     return this._element;
   }
   
-  _handleLikeIcon(evt) {
-    evt.target.classList.toggle('button_type_like_active');
-  };
+  _handleLikeCard() {
+    this._api.addLike(this._id)
+      .then((res) => {
+        this._isLiked = true;
+        document.getElementById(this._id).querySelector('.element__likes').textContent = (res.likes.length)
+      })
+      .then(() => {
+        document.getElementById(this._id).querySelector('.button_type_like').classList.add('button_type_like_active');
+      })
+      .catch(err => {
+        console.log('Ошибка при постановке лайка карточке', err.message);
+      });
+  }
+
+  _handleDeleteLike() {  
+    this._api.deleteLike(this._id)
+      .then((res) => {
+        document.getElementById(this._id).querySelector('.element__likes').textContent = (res.likes.length);
+        this._isLiked = false;
+      })
+      .then(() => {
+        document.getElementById(this._id).querySelector('.button_type_like').classList.remove('button_type_like_active');
+        })
+      .catch(err => {
+        console.log('Ошибка при постановке лайка карточке', err.message);
+      });
+  }
 
   _setEventListeners() {
-    this._element.querySelector('.button_type_like').addEventListener('click', (evt) => {
-      this._handleLikeIcon(evt)
+    this._element.querySelector('.button_type_like').addEventListener('click', () => {
+     if (!this._isLiked) {
+        this._handleLikeCard();
+      } else {
+        this._handleDeleteLike();
+      }
     });
     
     this._element.querySelector('.element__image').addEventListener('click', () => this._handleCardClick(this._image, this._text));

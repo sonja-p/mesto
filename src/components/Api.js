@@ -101,18 +101,32 @@ export default class Api {
         });
     }
 
-    handleLikeCard() {
+    addLike(id) {
         //Вместо cardId в URL нужно подставить свойство _id соответствующей карточки.
-        return fetch(`${this._url}/cards/likes/${this.cardId}`, {
+        return fetch(`${this._url}/cards/likes/${id}`, {
             method: 'PUT',
             headers: this._headers,
         })
         .then(res => this._parseResponse(res))
         .then((result) => {
-            console.log(result);
+            return(result);
         })
         .catch(err => {
-            console.log('Ошибка при загрузке карточки', err.message);
+            console.log('Ошибка при постановке лайка карточке', err.message);
+        });
+    }
+
+    deleteLike(id) {
+        return fetch(`${this._url}/cards/likes/${id}`, {
+            method: 'DELETE',
+            headers: this._headers,
+        })
+        .then(res => this._parseResponse(res))
+        .then((result) => {
+            return(result);
+        })
+        .catch(err => {
+            console.log('Ошибка при снятии лайка с карточки', err.message);
         });
     }
 

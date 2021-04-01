@@ -4,7 +4,6 @@ export default class PopupConfirmDelete extends Popup {
     constructor(popupSelector, api) {
         super(popupSelector);
         this._button = this._popup.querySelector('.popup__save-button');
-        //this._handleDeleteCard = handleDeleteCard;
         this._api = api;
     }
 
@@ -17,7 +16,7 @@ export default class PopupConfirmDelete extends Popup {
           .catch(err => {
             console.log('Ошибка при удалении карточки', err);
           });
-      }
+    }
 
     open(id) {  
         super.open();
