@@ -1,0 +1,20 @@
+.button_type_change-avatar {
+    background-image: url('../../../../images/edit-avatar.svg');
+    width: 120px;
+    height: 120px;
+    background-color: inherit;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    transition: opacity 350ms ease;
+}
+
+.button_type_change-avatar:hover {
+    opacity: 1;
+}

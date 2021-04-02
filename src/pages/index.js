@@ -6,7 +6,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupConfirmDelete from '../components/PopupConfirmDelete.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
-import { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput } from '../utils/constants.js';
+import { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput, avatarLinkInput } from '../utils/constants.js';
 import './index.css';
 
 const options = {
@@ -22,12 +22,13 @@ const api = new Api(options);
 const userInfo = new UserInfo({
   nameSelector: '.profile__name', 
   infoSelector: '.profile__description',
-  avatarSelector: '.profile__avatar',
-}, api);
+  avatarSelector: '.profile__avatar'
+});
 
 api.getUserInfo()
-  .then(data => {
-    userInfo.setUserInfo(data.name, data.about);
+  .then(userData => {
+    userInfo.setUserInfo(userData.name, userData.about);
+    userInfo.setAvatar(userData.avatar);
   })
   .catch(err => {
     console.log('Ошибка при загрузке информации пользователя', err.message);
@@ -36,14 +37,17 @@ api.getUserInfo()
 const popupEditProfile = new PopupWithForm({
   renderer: () => {
     api.editUserInfo(nameInput.value, professionInput.value)
-      .then(data => {
-        userInfo.setUserInfo(data.name, data.about);
+      .then(userData => {
+        userInfo.setUserInfo(userData.name, userData.about);
       })
       .catch(err => {
         console.log('Ошибка при загрузке информации пользователя', err.message);
+      })
+      .finally(() => {
+        popupEditProfile.renderLoading(false);
       });
   }
-},'.popup_type_edit', api
+},'.popup_type_edit'
 );
 
 popupEditProfile.setEventListeners();
@@ -88,7 +92,7 @@ api.getInitialCards()
     );
     return cardList
   })
-  .then((res) => res.renderItems())
+  .then((list) => list.renderItems())
   .catch(err => {
     console.log('Ошибка при загрузке карточек', err.message);
   });
@@ -100,22 +104,47 @@ const popupAddCard = new PopupWithForm({
       link: imageLinkInput.value
     };
     api.addNewCard(inputData)
-      .then((res) => createCard(res))
-      .then((res) => document.querySelector('.elements__list').prepend(res))
+      .then((data) => createCard(data))
+      .then((card) => document.querySelector('.elements__list').prepend(card))
       .catch(err => {
         console.log('Ошибка при загрузке карточки', err.message);
+      })
+      .finally(() => {
+        popupAddCard.renderLoading(false);
       });
     }
-  },'.popup_type_add', api
+  },'.popup_type_add'
 );
 
 popupAddCard.setEventListeners();
 
 const formEditProfileValidator = new FormValidator(config, '.popup_type_edit');
 const formAddCardValidator = new FormValidator(config, '.popup_type_add');
+const formChangeAvatarValidator = new FormValidator(config, '.popup_type_change-avatar');
+
+const popupEditAvatar = new PopupWithForm({
+  renderer: () => {
+    api.changeAvatar(avatarLinkInput.value)
+      .then((profileData) => {
+        document.querySelector('.profile__avatar').src = profileData.avatar;
+      })
+      .catch(err => {
+        console.log('Ошибка при обновлении аватара пользователя', err.message)
+      })
+      .finally(() => {
+        popupEditAvatar.renderLoading(false);
+      });
+  }
+}, '.popup_type_change-avatar')
+
+popupEditAvatar.setEventListeners();
+document.querySelector('.button_type_change-avatar').addEventListener('click', () => {
+  popupEditAvatar.open();
+})
 
 formEditProfileValidator.enableValidation();
 formAddCardValidator.enableValidation();
+formChangeAvatarValidator.enableValidation();
 
 addButton.addEventListener('click', () => {
   formAddCardValidator.disableSubmitButton();

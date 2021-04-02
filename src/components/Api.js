@@ -45,7 +45,7 @@ export default class Api {
             //в теле — JSON с двумя свойствами — name и about. Значениями этих свойств должны быть обновлённые данные пользователя
             body: JSON.stringify({
                 name: newName,
-                about: newAbout
+                about: newAbout,
             })
         })
         .then(res => this._parseResponse(res))
@@ -77,7 +77,6 @@ export default class Api {
 
     getCardLikes() {
         return fetch(`${this._url}/cards`, {
-            //method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
                 likes: []
@@ -140,7 +139,7 @@ export default class Api {
         })
         .then(res => this._parseResponse(res))
         .then((result) => {
-            console.log(result);
+            return(result);
         })
         .catch(err => {
             console.log('Ошибка при обновлении аватара пользователя', err.message);

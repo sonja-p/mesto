@@ -14,7 +14,10 @@
 
         <main class="content page__content">
             <section class="profile">
-                <div class="profile__avatar"></div>
+                <div class="profile__avatar-container">
+                  <img  class="profile__avatar" src="./images/cousteau.jpg" alt="Аватар пользователя">
+                  <button class="button button_type_change-avatar" type="button"></button>
+                </div>
                 <div class="profile__info">
                     <div class="profile__name-section">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -48,7 +51,7 @@
         </section>
 
         <section class="popup popup_type_add">
-          <form class="popup__container" name="add_card"  novalidate>
+          <form class="popup__container" name="add_card" novalidate>
               <h2 class="popup__title">Новое место</h2>
               <input class="popup__input" id="image-name" name="image-name" type="text" placeholder="Название" minlength="2" maxlength="30" required>
               <span class="image-name-error popup__input-error"></span>
@@ -79,7 +82,7 @@
           <form class="popup__container" name="change_avatar" novalidate>
             <h2 class="popup__title">Обновить аватар</h2>
             <input class="popup__input" id="avatar-link" name="avatar-link" type="url" placeholder="Ссылка на картинку" required>
-            <span class="image-name-error popup__input-error"></span>
+            <span class="avatar-link-error popup__input-error"></span>
             <button class="button popup__save-button" type="submit">Сохранить</button>
             <button class="button button_type_close" type="reset"></button>
         </form>

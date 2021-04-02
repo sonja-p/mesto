@@ -1,19 +1,18 @@
 export default class UserInfo {
-    constructor({ nameSelector, infoSelector, avatarSelector }, api) {        
+    constructor({ nameSelector, infoSelector, avatarSelector }) {        
         this._profileName = document.querySelector(nameSelector);
         this._profileProfession = document.querySelector(infoSelector);
         this._avatar = document.querySelector(avatarSelector);
-        this._api = api;
-    }
-
-    changeAvatar(link) {
-        this._api.changeAvatar(link)
     }
 
     getUserInfo() {
         return { name: this._profileName.textContent,
             profession: this._profileProfession.textContent
         }
+    }
+
+    setAvatar(avatarLink) {
+        this._avatar.src = avatarLink;
     }
 
     setUserInfo(name, profession) {

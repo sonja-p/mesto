@@ -13,5 +13,6 @@ const nameInput = document.querySelector('input[name=profile-name]');
 const professionInput = document.querySelector('input[name=description]');
 const imageLinkInput = document.querySelector('input[name=image-link]');
 const imageTitleInput = document.querySelector('input[name=image-name]');
+const avatarLinkInput = document.querySelector('input[name=avatar-link]');
 
-export { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput }
+export { config, addButton, editButton, nameInput, professionInput, imageLinkInput, imageTitleInput, avatarLinkInput }
