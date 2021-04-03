@@ -15,26 +15,14 @@ export default class Api {
         return fetch(`${this._url}/users/me`, {
             headers: this._headers
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-        return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при загрузке информации пользователя', err.message);
-        }); 
+        .then(res => this._parseResponse(res));
     }
 
     getInitialCards() {
         return fetch(`${this._url}/cards`, {
             headers: this._headers
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-        return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при загрузке карточек', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
 
@@ -48,13 +36,7 @@ export default class Api {
                 about: newAbout,
             })
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-        return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при загрузке информации пользователя', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     addNewCard(inputData) {
@@ -66,13 +48,7 @@ export default class Api {
                 link: inputData.link
             })
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-            return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при загрузке карточки', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     getCardLikes() {
@@ -82,10 +58,7 @@ export default class Api {
                 likes: []
             })
         })
-        .then(res => this._parseResponse(res))
-        .catch(err => {
-            console.log('Ошибка при загрузке карточки', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     handleDeleteCard(id) {
@@ -94,10 +67,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then(res => this._parseResponse(res))
-        .catch(err => {
-            console.log('Ошибка при удалении карточки', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     addLike(id) {
@@ -106,13 +76,7 @@ export default class Api {
             method: 'PUT',
             headers: this._headers,
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-            return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при постановке лайка карточке', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     deleteLike(id) {
@@ -120,13 +84,7 @@ export default class Api {
             method: 'DELETE',
             headers: this._headers,
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-            return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при снятии лайка с карточки', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 
     changeAvatar(link) {
@@ -137,13 +95,7 @@ export default class Api {
                 avatar: `${link}`
             })
         })
-        .then(res => this._parseResponse(res))
-        .then((result) => {
-            return(result);
-        })
-        .catch(err => {
-            console.log('Ошибка при обновлении аватара пользователя', err.message);
-        });
+        .then(res => this._parseResponse(res));
     }
 }
 

@@ -29,6 +29,7 @@ api.getUserInfo()
   .then(userData => {
     userInfo.setUserInfo(userData.name, userData.about);
     userInfo.setAvatar(userData.avatar);
+    //getUserId(userData.id);
   })
   .catch(err => {
     console.log('Ошибка при загрузке информации пользователя', err.message);
@@ -65,7 +66,31 @@ popupWithImage.setEventListeners();
 const popupDeleteCard = new PopupConfirmDelete('.popup_type_delete', api);
 popupDeleteCard.setEventListeners();
 
+function handleLikeCard(card) {
+  api.addLike(card.getId())
+    .then(data => {
+      card.setLikesInfo(data);
+      card.isLiked = true
+    })
+    .catch(err => {
+      console.log('Ошибка при постановке лайка карточке', err.message);
+    });
+}
+
+function handleDeleteLike(card) {  
+  api.deleteLike(card.getId())
+    .then(data => {
+      card.setLikesInfo(data);
+      card.isLiked = false
+    })
+    .catch(err => {
+      console.log('Ошибка при удалении лайка карточки', err.message);
+    });
+}
+
 function createCard(item) {
+  const userId = '22d3160f22696e6f4d344887';
+
   const card = new Card(item, '.card_template', { 
     handleCardClick: () => {
       popupWithImage.open(item.link, item.name);
@@ -74,7 +99,7 @@ function createCard(item) {
     handleSubmitDelete: (id) => {
       popupDeleteCard.open(id)
     }
-  }, api);
+  }, { handleLikeCard }, { handleDeleteLike }, userId);
 
   return card.generateCard();
 }
@@ -105,7 +130,8 @@ const popupAddCard = new PopupWithForm({
     };
     api.addNewCard(inputData)
       .then((data) => createCard(data))
-      .then((card) => document.querySelector('.elements__list').prepend(card))
+      /////////////////////////////////////////////////
+      //.then((card) => cardList.addNewItem(card))
       .catch(err => {
         console.log('Ошибка при загрузке карточки', err.message);
       })

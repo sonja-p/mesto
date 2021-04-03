@@ -1,9 +1,8 @@
  export default class Section {
-    constructor({ items, renderer }, containerSelector, api) {
+    constructor({ items, renderer }, containerSelector) {
         this._renderedItems = items;
         this._renderer = renderer; 
         this._container = document.querySelector(containerSelector);
-        this._api = api;
     }
 
     renderItems() {
@@ -14,9 +13,9 @@
         this._container.append(element);
     }
 
-    /*addNewItem(element) {
+    addNewItem(element) {
         this._container.prepend(element);
-    }*/ 
+    }
 }
 
 /*Создайте класс Section, который отвечает за отрисовку элементов на странице. 
