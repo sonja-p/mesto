@@ -1,35 +1,37 @@
 import Popup from './Popup.js';
 
 export default class PopupConfirmDelete extends Popup {
-    constructor(popupSelector, api) {
+    constructor(popupSelector) {
         super(popupSelector);
-        this._button = this._popup.querySelector('.popup__save-button');
-        this._api = api;
+        this._submitButton = this._popup.querySelector('.popup__save-button');
+        this._buttonDefaultText = this._submitButton.textContent;
     }
 
-    _handleDeleteCard(id) {
-        this._api.handleDeleteCard(id)
-          .then(() => {
-            const card = document.getElementById(id);
-            card.remove();
-          })
-          .catch(err => {
-            console.log('Ошибка при удалении карточки', err);
-          });
+
+    setSubmitAction(action) {
+        this._handleDeleteCard = action;
+        this._deleteCard = this._handleDeleteCard.bind(this)
     }
 
-    open(id) {  
+    open() {
         super.open();
-        this._button.addEventListener('click', () => this._handleDeleteCard(id));
+        this._submitButton.addEventListener('click', this._deleteCard);
     }
 
     close() {
         super.close();
-        this._button.removeEventListener('click', () => this._handleDeleteCard);
+        this._submitButton.removeEventListener('click', this._deleteCard);
     }
 
     setEventListeners() {
         super.setEventListeners();
-        this._button.addEventListener('click', () => this.close());
+        this._submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            this.renderLoading(true);
+        })
+    }
+
+    renderLoading(isLoading) {
+        this._submitButton.textContent = isLoading ? 'Удаление...' : this._buttonDefaultText;
     }
 }
