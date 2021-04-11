@@ -60,8 +60,9 @@ function handleLikeCard(card) {
   api.addLike(card.getId())
     .then(data => {
       card.setLikesInfo(data);
-      card.isLiked = true
+      card.isLiked = true;
     })
+    .then(() => card.setLikeButtonStatus())
     .catch(err => {
       console.log('Ошибка при постановке лайка карточке', err.message);
     });
@@ -71,8 +72,9 @@ function handleDeleteLike(card) {
   api.deleteLike(card.getId())
     .then(data => {
       card.setLikesInfo(data);
-      card.isLiked = false
+      card.isLiked = false;
     })
+    .then(() => card.setLikeButtonStatus())
     .catch(err => {
       console.log('Ошибка при удалении лайка карточки', err.message);
     });
