@@ -92,8 +92,6 @@ function createCard(item) {
         api.handleDeleteCard(card.getId())
         .then(() => {
           card.removeCard();
-        })
-        .then(() => {
           popupDeleteCard.close();
         })
         .catch(err => {
@@ -118,8 +116,8 @@ const popupEditAvatar = new PopupWithForm({
     api.changeAvatar(avatarLinkInput.value)
       .then((profileData) => {
         document.querySelector('.profile__avatar').src = profileData.avatar;
+        popupEditAvatar.close();
       })
-      .then(() => popupEditAvatar.close())
       .catch(err => {
         console.log('Ошибка при обновлении аватара пользователя', err.message)
       })
@@ -163,8 +161,10 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
         };
         api.addNewCard(inputData)
           .then((data) => createCard(data))
-          .then((card) => cardList.addNewItem(card))
-          .then(() => popupAddCard.close())
+          .then((card) => {
+            cardList.addNewItem(card);
+            popupAddCard.close();
+          })
           .catch(err => {
             console.log('Ошибка при загрузке карточки', err.message);
           })
