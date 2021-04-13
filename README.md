@@ -13,7 +13,7 @@
 
 **Проект 4: Место**
 
-* [Ссылка на сайт](https://sonja-p.github.io/mesto/)
+* [Ссылка на сайт](https://sonja-p.github.io/mesto/index.html)
 
 **Изображения**
 
